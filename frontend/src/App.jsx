@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import './App.css'
 
 
 function App() {
@@ -25,7 +26,10 @@ function App() {
 
   return (
     <>
-     <Home />
+     {/* <Home /> */}
+     <h1 className="text-3xl font-bold underline">
+        CODECLASH
+     </h1>
     </>
   )
 }
