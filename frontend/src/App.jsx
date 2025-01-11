@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Home } from './sections/Home/Home';
 
 
 function App() {
@@ -26,7 +25,7 @@ function App() {
 
   return (
     <>
-      <Home />
+     <Home />
     </>
   )
 }
