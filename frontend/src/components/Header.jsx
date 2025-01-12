@@ -8,6 +8,8 @@ import MenuSvg from "../assets/svg/MenuSvg";
 import { HamburgerMenu } from "./design/Header";
 import { useState } from "react";
 
+import { useAuth0 } from "@auth0/auth0-react";
+
 const Header = () => {
   const pathname = useLocation();
   const [openNavigation, setOpenNavigation] = useState(false);
@@ -23,6 +25,8 @@ const Header = () => {
   const handleClick = () => {
     setOpenNavigation(false);
   };
+
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
   return (
     <div
@@ -66,9 +70,35 @@ const Header = () => {
           href="#signup"
           className="button-hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block"
         ></a>
+
+        {/* 
         <Button className="hidden lg:flex" href="#login">
           Sign in
         </Button>
+        */}
+        {/* Conditionally render Login or Logout button */}
+        <div className="flex items-center">
+          {isAuthenticated ? (
+            <>
+              <h1 className="text-n-1">Welcome, {user.name}!</h1>
+              <Button
+                className="hidden lg:flex"
+                onClick={() =>
+                  logout({ logoutParams: { returnTo: window.location.origin } })
+                }
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <h1 className="text-n-1 mr-4">Welcome, Guest!</h1>
+              <Button className="hidden lg:flex" onClick={loginWithRedirect}>
+                Sign in
+              </Button>
+            </>
+          )}
+        </div>
 
         {/* 
         <Button
