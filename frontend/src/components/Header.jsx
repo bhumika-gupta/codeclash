@@ -8,7 +8,7 @@ import MenuSvg from "../assets/svg/MenuSvg";
 import { HamburgerMenu } from "./design/Header";
 import { useState } from "react";
 
-const Header = ({ user, onLogin, onLogout }) => {
+const Header = () => {
   const pathname = useLocation();
   const [openNavigation, setOpenNavigation] = useState(false);
 
@@ -60,30 +60,13 @@ const Header = ({ user, onLogin, onLogout }) => {
             <HamburgerMenu />
           </div>
         </nav>
-
-        {/*}
         <a
           href="#signup"
           className="button-hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block"
         ></a>
         <Button className="hidden lg:flex" href="#login">
           Sign in
-        </Button> */}
-        {/* Show Login or Logout button based on user authentication status */}
-        {user ? (
-          <>
-            <Button className="hidden lg:flex" onClick={onLogout}>
-              Log Out
-            </Button>
-            <Button className="hidden lg:flex" href="/profile">
-              Profile
-            </Button>
-          </>
-        ) : (
-          <Button className="hidden lg:flex" onClick={onLogin}>
-            Log In
-          </Button>
-        )}
+        </Button>
 
         <Button
           className="ml-auto lg:hidden"
